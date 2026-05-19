@@ -1,5 +1,4 @@
-# experiments/simple_5fold_single_stage_cl.py
-# -*- coding: utf-8 -*-
+
 import os
 
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
@@ -382,7 +381,7 @@ def run_fold_single_stage(
     params = list(gnn.parameters()) + list(attn_d.parameters()) + list(attn_s.parameters()) + list(vcdn.parameters()) + [x]
     opt = optim.Adam(params, lr=lr, weight_decay=wd)
     
-    # 修改后
+  
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(opt, mode='max', factor=0.5, patience=10)
     
     crit = FocalLoss(alpha=hp_dict['focal_alpha'], gamma=hp_dict['focal_gamma'], reduction='sum')
