@@ -92,32 +92,6 @@ def init_logger(log_dir, log_name=None):
     logging.info(f"Log file: {log_path}")
     return logging, log_path
 
-# def init_logger(log_dir):
-#     """
-#     Avoid duplicate StreamHandler when re-running in notebooks / multi-runs.
-#     """
-#     log_path = os.path.join(log_dir, time.strftime("%Y_%m_%d") + ".log")
-#
-#     root = logging.getLogger()
-#     root.setLevel(logging.INFO)
-#
-#     # file handler (always add if not exists)
-#     has_file = any(isinstance(h, logging.FileHandler) and getattr(h, "baseFilename", "") == log_path for h in root.handlers)
-#     if not has_file:
-#         fh = logging.FileHandler(log_path, mode="a", encoding="utf-8")
-#         fh.setLevel(logging.INFO)
-#         fh.setFormatter(logging.Formatter("%(asctime)s   %(message)s", datefmt="%m-%d %H:%M"))
-#         root.addHandler(fh)
-#
-#     # stream handler (add once)
-#     has_stream = any(isinstance(h, logging.StreamHandler) and not isinstance(h, logging.FileHandler) for h in root.handlers)
-#     if not has_stream:
-#         sh = logging.StreamHandler()
-#         sh.setLevel(logging.INFO)
-#         sh.setFormatter(logging.Formatter("%(name)-12s: %(levelname)-8s %(message)s"))
-#         root.addHandler(sh)
-#
-#     return logging
 
 
 def set_seed(fix_seed: int):
